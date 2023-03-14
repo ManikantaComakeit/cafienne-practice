@@ -1,0 +1,13 @@
+<humantask>
+    <cafienne:implementation name="Selected" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <task-model>{
+  "schema":{
+    "title":"Congrats!!! You are selected..",
+    "type":"object",
+    "properties":{
+      
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

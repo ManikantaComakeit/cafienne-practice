@@ -1,0 +1,180 @@
+<definitions>
+    <caseFileItemDefinition name="tempincel" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="tempincel.cfid">
+        <property name="tempInCel" type="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
+    </caseFileItemDefinition>
+    <caseFileItemDefinition name="tempinfah" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="tempinfah.cfid">
+        <property name="tempInFah" type="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
+    </caseFileItemDefinition>
+    <case id="TemperatureDemo.case" name="TemperatureDemo" expressionLanguage="spel">
+        <documentation textFormat="text/plain">
+            <text>
+                <![CDATA[TemperatureDemo]]>
+            </text>
+        </documentation>
+        <caseFileModel>
+            <caseFileItem id="_pp84v_0" name="TempInCel" multiplicity="ExactlyOne" definitionRef="tempincel.cfid"/>
+            <caseFileItem id="_pp84v_1" name="TempInFah" multiplicity="ExactlyOne" definitionRef="tempinfah.cfid"/>
+        </caseFileModel>
+        <casePlanModel id="cm__pp84v_0" name="TemperatureDemo" autoComplete="true">
+            <planItem id="pi_ht__pp84v_0" name="Convert Temp to Fahrenheit" definitionRef="ht__pp84v_0"/>
+            <planItem id="pi_ht__pp84v_2" name="Converted Temp" definitionRef="ht__pp84v_2">
+                <entryCriterion id="_pp84v_22" name="EntryCriterion_0" sentryRef="crit__pp84v_0"/>
+            </planItem>
+            <sentry id="crit__pp84v_0">
+                <planItemOnPart id="_pp84v_23" sourceRef="pi_ht__pp84v_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <planningTable id="_pp84v_5"/>
+            <humanTask id="ht__pp84v_0" name="Convert Temp to Fahrenheit" isBlocking="true">
+                <inputs id="_pp84v_6" name="TempInCel" bindingRef="_pp84v_0"/>
+                <outputs id="_pp84v_9" name="TempInFah" bindingRef="_pp84v_1"/>
+                <extensionElements mustUnderstand="false">
+                    <cafienne:implementation name="ConvertTemptoFahrenheit" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="ConvertTemptoFahrenheit.humantask">
+                        <input id="_fT39_TempInCel" name="TempInCel"/>
+                        <output id="_QyIB_TempInFah" name="TempInFah"/>
+                        <task-model>
+			{
+				"schema": {
+					"title": "Convert Temperature",
+					"type": "object",
+					"properties": {
+						"TempInCel": {
+							"title": "In Celcius",
+							"type": "object",
+							"properties": {
+								"tempInCel": {
+									"type": "integer",
+									"title": "In celcius"
+								}
+                            }
+                        },
+                           "TempInFah": {
+							"title": "In Fahrenheit",
+							"type": "object",
+							"properties": {
+								"tempInFah": {
+									"type": "integer",
+									"title": "In Fahrenheit"
+								}
+							}
+						}
+					}
+				},
+              "uiSchema" : {
+       	"ui:order": [ "TempInCel", "TempInFah" ],
+		"TempInCel" : {
+			"tempInCel" : {
+				"ui:readonly" : true
+			}
+		},
+		"TempInFah" : {
+			"tempInFah" : {
+				"ui:widget" : "textarea"
+			}
+		}
+	}
+			}</task-model>
+                        <parameterMapping id="_pp84v_16" sourceRef="_pp84v_6" targetRef="_fT39_TempInCel"/>
+                        <parameterMapping id="_pp84v_17" sourceRef="_QyIB_TempInFah" targetRef="_pp84v_9"/>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+            <humanTask id="ht__pp84v_2" name="Converted Temp" isBlocking="true">
+                <inputs id="_pp84v_20" name="TempInCel" bindingRef="_pp84v_0"/>
+                <inputs id="_pp84v_21" name="TempInFah" bindingRef="_pp84v_1"/>
+                <extensionElements mustUnderstand="false">
+                    <cafienne:implementation name="ConvertedTemp" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="ConvertedTemp.humantask">
+                        <input id="_4Zbf_TempInCel" name="TempInCel"/>
+                        <input id="_nLdV_TempInFah" name="TempInFah"/>
+                        <task-model>
+			{
+				"schema": {
+					"title": "Convert Temperature",
+					"type": "object",
+					"properties": {
+						"TempInCel": {
+							"title": "In Celcius",
+							"type": "object",
+							"properties": {
+								"tempInCel": {
+									"type": "integer",
+									"title": "In celcius"
+								}
+                            }
+                        },
+                           "TempInFah": {
+							"title": "In Fahrenheit",
+							"type": "object",
+							"properties": {
+								"tempInFah": {
+									"type": "integer",
+									"title": "In Fahrenheit"
+								}
+							}
+						}
+					}
+				},
+              "uiSchema" : {
+       	"ui:order": [ "TempInCel", "TempInFah" ],
+		"TempInCel" : {
+			"tempInCel" : {
+				"ui:readonly" : true
+			}
+		},
+		"TempInFah" : {
+			"tempInFah" : {
+				"ui:readonly" : true
+			}
+		}
+	}
+			}</task-model>
+                        <parameterMapping id="_pp84v_12" sourceRef="_pp84v_20" targetRef="_4Zbf_TempInCel"/>
+                        <parameterMapping id="_pp84v_15" sourceRef="_pp84v_21" targetRef="_nLdV_TempInFah"/>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+        </casePlanModel>
+        <input id="_pp84v_2" name="TempInCel" bindingRef="_pp84v_0"/>
+        <extensionElements mustUnderstand="false">
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "TempInCel":{
+            "title":"Enter temp in Celcius",
+            "type":"object",
+            "properties":{
+              "tempInCel":{
+                "type":"integer",
+                "title":"In Celcius"
+              }
+            }
+          }
+        }
+    }
+}</cafienne:start-case-model>
+        </extensionElements>
+    </case>
+    <CMMNDI>
+        <CMMNDiagram>
+            <CMMNShape cmmnElementRef="cm__pp84v_0">
+                <Bounds x="20" y="20" width="810" height="400"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_ht__pp84v_0">
+                <Bounds x="130" y="130" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="_pp84v_5">
+                <Bounds x="300" y="33" width="24" height="16"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_ht__pp84v_2">
+                <Bounds x="550" y="120" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="_pp84v_22">
+                <Bounds x="544" y="150" width="12" height="20"/>
+            </CMMNShape>
+            <CMMNEdge sourceCMMNElementRef="_pp84v_22" targetCMMNElementRef="pi_ht__pp84v_0"/>
+        </CMMNDiagram>
+    </CMMNDI>
+</definitions>

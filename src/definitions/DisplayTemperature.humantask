@@ -1,0 +1,23 @@
+<humantask>
+    <cafienne:implementation name="DisplayTemperature" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_omnT_main" name="main"/>
+        <task-model>{
+    "schema":{
+        "title": "",
+        "type": "object",
+            "properties":{
+              "main":{
+                "type":"object",
+                "title":"Temperature",
+                "properties":{
+                  "temp":{
+                    "type":"string",
+                    "title":""
+              }
+            }
+          }
+     }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

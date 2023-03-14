@@ -1,0 +1,283 @@
+<case id="Recruitment.case" name="Recruitment" expressionLanguage="spel" guid="_0wSHR">
+    <documentation textFormat="text/plain">
+        <text>
+            <![CDATA[Recruitment]]>
+        </text>
+    </documentation>
+    <caseFileModel>
+        <caseFileItem id="_0wSHR_1" name="CandidateDetails" multiplicity="ExactlyOne" definitionRef="candidatedetails.cfid"/>
+        <caseFileItem id="_0wSHR_35" name="Level1Questions" multiplicity="ExactlyOne" definitionRef="level1questions.cfid"/>
+        <caseFileItem id="_0wSHR_66" name="Level2Questions" multiplicity="ExactlyOne" definitionRef="level2questions.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__0wSHR_0" name="Recruitment" autoComplete="true">
+        <planItem id="pi_ms__0wSHR_0" name="Approved to level 1" definitionRef="ms__0wSHR_0">
+            <entryCriterion id="_0wSHR_4" name="EntryCriterion_2" sentryRef="crit__0wSHR_2"/>
+        </planItem>
+        <planItem id="pi_ms__0wSHR_1" name="Rejected before level 1" definitionRef="ms__0wSHR_1">
+            <entryCriterion id="_0wSHR_13" name="EntryCriterion_1" sentryRef="crit__0wSHR_1"/>
+        </planItem>
+        <planItem id="pi__0wSHR_36" name="Interview Process 2" definitionRef="_0wSHR_36">
+            <entryCriterion id="_0wSHR_39" name="EntryCriterion_3" sentryRef="crit__0wSHR_4"/>
+        </planItem>
+        <planItem id="pi_ms__0wSHR_2" name="Rejected before level 2" definitionRef="ms__0wSHR_2">
+            <entryCriterion id="_0wSHR_47" name="EntryCriterion_7" sentryRef="crit__0wSHR_8"/>
+        </planItem>
+        <planItem id="pi_ms__0wSHR_3" name="Rejected" definitionRef="ms__0wSHR_3">
+            <entryCriterion id="_0wSHR_54" name="EntryCriterion_8" sentryRef="crit__0wSHR_10"/>
+        </planItem>
+        <planItem id="pi_ms__0wSHR_4" name="Selected" definitionRef="ms__0wSHR_4">
+            <entryCriterion id="_0wSHR_61" name="EntryCriterion_9" sentryRef="crit__0wSHR_12"/>
+        </planItem>
+        <planItem id="pi_ht__0wSHR_6" name="Congrats" definitionRef="ht__0wSHR_6">
+            <entryCriterion id="_0wSHR_64" name="EntryCriterion_10" sentryRef="crit__0wSHR_13"/>
+        </planItem>
+        <planItem id="pi_pt__0wSHR_0" name="Approval to Level 1" definitionRef="pt__0wSHR_0"/>
+        <planItem id="pi__0wSHR_7" name="Interview Process 1" definitionRef="_0wSHR_7">
+            <entryCriterion id="_0wSHR_27" name="EntryCriterion_0" sentryRef="crit__0wSHR_0"/>
+        </planItem>
+        <planItem id="pi_pt__0wSHR_2" name="Database Storing" definitionRef="pt__0wSHR_2">
+            <entryCriterion id="_0wSHR_75" name="EntryCriterion_6" sentryRef="crit__0wSHR_7"/>
+        </planItem>
+        <sentry id="crit__0wSHR_1">
+            <ifPart id="_0wSHR_17" contextRef="_0wSHR_1">
+                <condition id="_0wSHR_18">
+                    <body>
+                        <![CDATA[CandidateDetails.isApprovedToLvl1=="Rejected"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_0wSHR_2" sourceRef="pi_pt__0wSHR_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_3">
+            <planItemOnPart id="_0wSHR_26" sourceRef="pi_ms__0wSHR_1">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_8">
+            <ifPart id="_0wSHR_49" contextRef="_0wSHR_1">
+                <condition id="_0wSHR_50">
+                    <body>
+                        <![CDATA[CandidateDetails.isApprovedToLvl2=="Rejected"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_0wSHR_63" sourceRef="pi__0wSHR_7">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_9">
+            <planItemOnPart id="_0wSHR_52" sourceRef="pi_ms__0wSHR_2">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_10">
+            <ifPart id="_0wSHR_56" contextRef="_0wSHR_1">
+                <condition id="_0wSHR_57">
+                    <body>
+                        <![CDATA[CandidateDetails.isSelected=="Rejected"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_0wSHR_55" sourceRef="pi_pt__0wSHR_2">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_11">
+            <planItemOnPart id="_0wSHR_59" sourceRef="pi_ms__0wSHR_3">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_12">
+            <ifPart id="_0wSHR_0" contextRef="_0wSHR_1">
+                <condition id="_0wSHR_3">
+                    <body>
+                        <![CDATA[CandidateDetails.isSelected=="Approved"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_0wSHR_62" sourceRef="pi_pt__0wSHR_2">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_13">
+            <planItemOnPart id="_0wSHR_65" sourceRef="pi_ms__0wSHR_4">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_4">
+            <ifPart id="_0wSHR_46" contextRef="_0wSHR_1">
+                <condition id="_0wSHR_73">
+                    <body>
+                        <![CDATA[CandidateDetails.isApprovedToLvl2=="Approved"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_0wSHR_32" sourceRef="pi__0wSHR_7">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_2">
+            <ifPart id="_0wSHR_15" contextRef="_0wSHR_1">
+                <condition id="_0wSHR_16">
+                    <body>
+                        <![CDATA[CandidateDetails.isApprovedToLvl1=="Approved"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_0wSHR_8" sourceRef="pi_pt__0wSHR_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_0">
+            <planItemOnPart id="_0wSHR_31" sourceRef="pi_ms__0wSHR_0">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__0wSHR_7">
+            <planItemOnPart id="_0wSHR_76" sourceRef="pi__0wSHR_36">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <exitCriterion id="_0wSHR_19" name="ExitCriterion_0" sentryRef="crit__0wSHR_3"/>
+        <exitCriterion id="_0wSHR_51" name="ExitCriterion_1" sentryRef="crit__0wSHR_9"/>
+        <exitCriterion id="_0wSHR_58" name="ExitCriterion_2" sentryRef="crit__0wSHR_11"/>
+        <humanTask id="ht__0wSHR_2" name="Interview Level 1" isBlocking="true">
+            <inputs id="_0wSHR_70" name="Level1Questions" bindingRef="_0wSHR_35"/>
+            <inputs id="_0wSHR_90" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <outputs id="_0wSHR_71" name="Level1Questions" bindingRef="_0wSHR_35"/>
+            <outputs id="_0wSHR_95" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="InterviewLevel1.humantask">
+                    <parameterMapping id="_0wSHR_28" sourceRef="_0wSHR_70" targetRef="_6DBB_Questions"/>
+                    <parameterMapping id="_0wSHR_29" sourceRef="_vPMB_Questions" targetRef="_0wSHR_71"/>
+                    <parameterMapping id="_0wSHR_67" sourceRef="_0wSHR_90" targetRef="_t4XO_CandidateDetails"/>
+                    <parameterMapping id="_0wSHR_68" sourceRef="_Wz29_CandidateDetails" targetRef="_0wSHR_95"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__0wSHR_4" name="Interview Level 2" isBlocking="true">
+            <inputs id="_0wSHR_84" name="Level2Questions" bindingRef="_0wSHR_66"/>
+            <inputs id="_0wSHR_98" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <outputs id="_0wSHR_85" name="Level2Questions" bindingRef="_0wSHR_66"/>
+            <outputs id="_0wSHR_99" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="InterviewLevel2.humantask">
+                    <parameterMapping id="_0wSHR_81" sourceRef="_0wSHR_84" targetRef="_TbL0_Questions"/>
+                    <parameterMapping id="_0wSHR_82" sourceRef="_UvBA_Questions" targetRef="_0wSHR_85"/>
+                    <parameterMapping id="_0wSHR_96" sourceRef="_0wSHR_98" targetRef="_42ov_CandidateDetails"/>
+                    <parameterMapping id="_0wSHR_97" sourceRef="_AJY0_CandidateDetails" targetRef="_0wSHR_99"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__0wSHR_5" name="Verify Interview Level 2" isBlocking="true">
+            <inputs id="_0wSHR_91" name="Level2Questions" bindingRef="_0wSHR_66"/>
+            <inputs id="_0wSHR_92" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <outputs id="_0wSHR_93" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <outputs id="_0wSHR_94" name="Level2Questions" bindingRef="_0wSHR_66"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="VerifyInterviewLevel2.humantask">
+                    <parameterMapping id="_0wSHR_86" sourceRef="_0wSHR_91" targetRef="_d8EC_Questions"/>
+                    <parameterMapping id="_0wSHR_87" sourceRef="_0wSHR_92" targetRef="_xhn3_CandidateDetails"/>
+                    <parameterMapping id="_0wSHR_88" sourceRef="_k2JU_Questions" targetRef="_0wSHR_94"/>
+                    <parameterMapping id="_0wSHR_89" sourceRef="_CGYj_CandidateDetails" targetRef="_0wSHR_93"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__0wSHR_6" name="Congrats" isBlocking="true">
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Selected.humantask"/>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__0wSHR_0" name="Approval to Level 1" isBlocking="true" processRef="ApprovaltoLevel1.process">
+            <inputs id="_0wSHR_102" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <outputs id="_0wSHR_30" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <parameterMapping id="_0wSHR_72" sourceRef="_0wSHR_102" targetRef="_emmG_CandidateDetails"/>
+            <parameterMapping id="_0wSHR_44" sourceRef="_DBlN_CandidateDetails" targetRef="_0wSHR_30"/>
+        </processTask>
+        <processTask id="pt__0wSHR_1" name="Verify Interview Level 1" isBlocking="true" processRef="VerifyInterviewLevel1.process">
+            <inputs id="_0wSHR_48" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <inputs id="_0wSHR_53" name="Level1Questions" bindingRef="_0wSHR_35"/>
+            <outputs id="_0wSHR_60" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <parameterMapping id="_0wSHR_37" sourceRef="_0wSHR_48" targetRef="_6j9L_CandidateDetails"/>
+            <parameterMapping id="_0wSHR_38" sourceRef="_0wSHR_53" targetRef="_bn2Y_Level1Questions"/>
+            <parameterMapping id="_0wSHR_42" sourceRef="_BR33_CandidateDetails" targetRef="_0wSHR_60"/>
+        </processTask>
+        <milestone id="ms__0wSHR_0" name="Approved to level 1"/>
+        <milestone id="ms__0wSHR_1" name="Rejected before level 1"/>
+        <milestone id="ms__0wSHR_2" name="Rejected before level 2"/>
+        <milestone id="ms__0wSHR_3" name="Rejected"/>
+        <milestone id="ms__0wSHR_4" name="Selected"/>
+        <stage id="_0wSHR_36" name="Interview Process 2" autoComplete="true">
+            <planItem id="pi_ht__0wSHR_4" name="Interview Level 2" definitionRef="ht__0wSHR_4"/>
+            <planItem id="pi_ht__0wSHR_5" name="Verify Interview Level 2" definitionRef="ht__0wSHR_5">
+                <entryCriterion id="_0wSHR_40" name="EntryCriterion_5" sentryRef="crit__0wSHR_6"/>
+            </planItem>
+            <sentry id="crit__0wSHR_6">
+                <planItemOnPart id="_0wSHR_41" sourceRef="pi_ht__0wSHR_4">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_0wSHR_7" name="Interview Process 1" autoComplete="true">
+            <planItem id="pi_ht__0wSHR_2" name="Interview Level 1" definitionRef="ht__0wSHR_2"/>
+            <planItem id="pi_pt__0wSHR_1" name="Verify Interview Level 1" definitionRef="pt__0wSHR_1">
+                <entryCriterion id="_0wSHR_33" name="EntryCriterion_4" sentryRef="crit__0wSHR_5"/>
+            </planItem>
+            <sentry id="crit__0wSHR_5">
+                <planItemOnPart id="_0wSHR_34" sourceRef="pi_ht__0wSHR_2">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <processTask id="pt__0wSHR_2" name="Database Storing" isBlocking="true" processRef="DatabaseStoring.process">
+            <inputs id="_0wSHR_79" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+            <parameterMapping id="_0wSHR_77" sourceRef="_0wSHR_79" targetRef="_zW7y_CandidateDetails"/>
+        </processTask>
+    </casePlanModel>
+    <input id="_0wSHR_83" name="CandidateDetails" bindingRef="_0wSHR_1"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema":{
+    "type":"object",
+    "properties":{
+      "CandidateDetails":{
+        "title":"Enter your Details:",
+        "type":"object",
+        "properties":{
+          "name":{
+            "title":"Enter your name:",
+            "type":"string"
+          },
+          "collegeName":{
+            "title":"Enter your college name:",
+            "type":"string"
+          },
+          "btechPercentage":{
+            "title":"Enter your btech percentage:",
+            "type":"string"
+          },
+          "intermediatePercentage":{
+            "title":"Enter your inter percentage:",
+            "type":"string"
+          },
+          "tenthPercentage":{
+            "title":"Enter your tenth percentage:",
+            "type":"string"
+          },
+          "skills":{
+            "title":"Enter your Skills follwed by comma(,):",
+            "type":"array",
+            "items":{
+                    "type":"string",
+                    "title":"add your skill"
+              }
+          }
+        }
+      }
+    }
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

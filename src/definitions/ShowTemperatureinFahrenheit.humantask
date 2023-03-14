@@ -1,0 +1,48 @@
+<humantask>
+    <cafienne:implementation name="ShowTemperatureinFahrenheit" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_GTHj_TempInCel" name="TempInCel"/>
+        <input id="_ryou_TempInFah" name="TempInFah"/>
+        <task-model>
+			{
+				"schema": {
+					"title": "Converted Temperature",
+					"type": "object",
+					"properties": {
+						"TempInCel": {
+							"title": "In Celcius",
+							"type": "object",
+							"properties": {
+								"tempCel": {
+									"type": "integer",
+									"title": "In celcius"
+								}
+                            }
+                        },
+                           "TempInFah": {
+							"title": "In Fahrenheit",
+							"type": "object",
+							"properties": {
+								"tempFah": {
+									"type": "string",
+									"title": "In Fahrenheit"
+								}
+							}
+						}
+					}
+				},
+              "uiSchema" : {
+       	"ui:order": [ "TempInCel", "TempInFah" ],
+		"TempInCel" : {
+			"tempCel" : {
+				"ui:readonly" : true
+			}
+		},
+		"TempInFah" : {
+			"tempFah" : {
+				"ui:readonly" : true
+			}
+		}
+	}
+			}</task-model>
+    </cafienne:implementation>
+</humantask>

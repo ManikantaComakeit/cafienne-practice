@@ -1,0 +1,23 @@
+<humantask>
+    <cafienne:implementation name="ArrHuman1" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_y2qB_arr" name="res"/>
+        <task-model>{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "arr":{
+            "title":"arr",
+            "type":"object",
+            "properties":{
+              "arr":{
+                "type":"string",
+                "title":""
+              }
+            }
+          }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

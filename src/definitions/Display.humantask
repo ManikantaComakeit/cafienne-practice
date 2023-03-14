@@ -1,0 +1,16 @@
+<humantask>
+    <cafienne:implementation name="Display" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_Y2Le_CandidateDetails" name="CandidateDetails"/>
+        <task-model>{
+  "schema":{
+    "type":"object",
+    "properties":{
+      "CandidateDetails":{
+        "title":"approved?",
+        "type":"string"
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

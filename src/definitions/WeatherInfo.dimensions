@@ -1,0 +1,24 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__DzboG_0">
+            <Bounds x="20" y="20" width="1060" height="530"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__DzboG_0">
+            <Bounds x="60" y="180" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__DzboG_0">
+            <Bounds x="860" y="180" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__DzboG_1">
+            <Bounds x="450" y="180" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_DzboG_28">
+            <Bounds x="854" y="210" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_DzboG_14">
+            <Bounds x="444" y="210" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="_DzboG_28" targetCMMNElementRef="pi_pt__DzboG_1"/>
+        <CMMNEdge sourceCMMNElementRef="pi_pt__DzboG_0" targetCMMNElementRef="_DzboG_14"/>
+    </CMMNDiagram>
+</CMMNDI>

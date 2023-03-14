@@ -1,0 +1,7 @@
+<caseFileItemDefinition name="level2questions" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="one" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="two" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="three" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="four" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="five" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

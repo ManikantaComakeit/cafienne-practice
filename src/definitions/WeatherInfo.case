@@ -1,0 +1,119 @@
+<case id="WeatherInfo.case" name="WeatherInfo" expressionLanguage="spel" guid="_DzboG">
+    <documentation textFormat="text/plain">
+        <text>
+            <![CDATA[WeatherInfo]]>
+        </text>
+    </documentation>
+    <caseFileModel>
+        <caseFileItem id="_DzboG_0" name="Location" multiplicity="ExactlyOne" definitionRef="location.cfid"/>
+        <caseFileItem id="_DzboG_3" name="response" multiplicity="ExactlyOne" definitionRef="response_3.cfid">
+            <children>
+                <caseFileItem id="_DzboG_16" name="weather" multiplicity="ZeroOrMore" definitionRef="weather.cfid"/>
+                <caseFileItem id="_DzboG_10" name="temperature" multiplicity="ExactlyOne" definitionRef="main.cfid"/>
+            </children>
+        </caseFileItem>
+        <caseFileItem id="_DzboG_7" name="user" multiplicity="ExactlyOne" definitionRef="user.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__DzboG_0" name="WeatherInfo" autoComplete="true">
+        <planItem id="pi_pt__DzboG_0" name="Call Weather API" definitionRef="pt__DzboG_0"/>
+        <planItem id="pi_ht__DzboG_0" name="Display Weather" definitionRef="ht__DzboG_0">
+            <entryCriterion id="_DzboG_28" name="EntryCriterion_2" sentryRef="crit__DzboG_2"/>
+        </planItem>
+        <planItem id="pi_pt__DzboG_1" name="My API" definitionRef="pt__DzboG_1">
+            <entryCriterion id="_DzboG_14" name="EntryCriterion_0" sentryRef="crit__DzboG_0"/>
+        </planItem>
+        <sentry id="crit__DzboG_2">
+            <planItemOnPart id="_DzboG_12" sourceRef="pi_pt__DzboG_1">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__DzboG_0">
+            <planItemOnPart id="_DzboG_21" sourceRef="pi_pt__DzboG_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__DzboG_0" name="Display Weather" isBlocking="true">
+            <inputs id="_DzboG_18" name="weather" bindingRef="_DzboG_16"/>
+            <inputs id="_DzboG_39" name="main" bindingRef="_DzboG_10"/>
+            <inputs id="_DzboG_41" name="user" bindingRef="_DzboG_7"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="DisplayWeather.humantask">
+                    <parameterMapping id="_DzboG_13" sourceRef="_DzboG_39" targetRef="_v2Vo_main"/>
+                    <parameterMapping id="_DzboG_17" sourceRef="_DzboG_18" targetRef="_YZYF_weather"/>
+                    <parameterMapping id="_DzboG_38" sourceRef="_DzboG_41" targetRef="_YN8c_user"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__DzboG_0" name="Call Weather API" isBlocking="true" processRef="CallWeatherAPI.process">
+            <inputs id="_DzboG_8" name="Location" bindingRef="_DzboG_0"/>
+            <outputs id="_DzboG_4" name="weather" bindingRef="_DzboG_16">
+                <bindingRefinement id="_DzboG_36">
+                    <body>
+                        <![CDATA[update]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <outputs id="_DzboG_11" name="temperature" bindingRef="_DzboG_10"/>
+            <parameterMapping id="_DzboG_6" sourceRef="_DzboG_8" targetRef="_RqPI_Loaction"/>
+            <parameterMapping id="_DzboG_20" sourceRef="_PcgK_response" targetRef="_DzboG_4">
+                <transformation id="_DzboG_25">
+                    <body>
+                        <![CDATA[response.weather]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+            <parameterMapping id="_DzboG_5" sourceRef="_PcgK_response" targetRef="_DzboG_11">
+                <transformation id="_DzboG_24">
+                    <body>
+                        <![CDATA[response.main]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+        </processTask>
+        <processTask id="pt__DzboG_1" name="My API" isBlocking="true" processRef="MyAPI.process">
+            <inputs id="_DzboG_35" name="user" bindingRef="_DzboG_7"/>
+            <inputs id="_DzboG_37" name="main" bindingRef="_DzboG_10"/>
+            <inputs id="_DzboG_40" name="Location" bindingRef="_DzboG_0"/>
+            <parameterMapping id="_DzboG_23" sourceRef="_DzboG_37" targetRef="_SdCF_main"/>
+            <parameterMapping id="_DzboG_33" sourceRef="_DzboG_35" targetRef="_SQK4_user"/>
+            <parameterMapping id="_DzboG_26" sourceRef="_DzboG_40" targetRef="_iIOX_Location"/>
+        </processTask>
+    </casePlanModel>
+    <input id="_DzboG_1" name="Location" bindingRef="_DzboG_0"/>
+    <input id="_DzboG_19" name="user" bindingRef="_DzboG_7"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "Location":{
+            "title":"Enter place",
+            "type":"object",
+            "properties":{
+              "place":{
+                "type":"string",
+                "title":""
+              }
+            }
+          },
+          "user":{
+            "title":"Username",
+            "type":"object",
+            "properties":{
+              "name":{
+                "type":"string",
+                "title":""
+              }
+            }
+          }
+        }
+    },
+  "uiSchema": {
+    "user": {
+      "name" :  {"ui:widget": "user-selector", "multiSelect" : false}
+    }
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

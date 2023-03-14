@@ -1,0 +1,35 @@
+<humantask>
+    <cafienne:implementation name="ConvertTemp" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_Fa0U_empInCel" name="TempInCel"/>
+        <output id="_N40y_TempInFah" name="TempInFah"/>
+        <task-model>
+			{
+				"schema": {
+					"title": "Convert Temperature",
+					"type": "object",
+					"properties": {
+						"TempInCel": {
+							"title": "In Celcius",
+							"type": "object",
+							"properties": {
+								"tempInCel": {
+									"type": "integer",
+									"title": "In celcius"
+								}
+                            }
+                        },
+                           "TempInFah": {
+							"title": "In Fahrenheit",
+							"type": "object",
+							"properties": {
+								"tempInFah": {
+									"type": "integer",
+									"title": "In Fahrenheit"
+								}
+							}
+						}
+					}
+				}
+			}</task-model>
+    </cafienne:implementation>
+</humantask>

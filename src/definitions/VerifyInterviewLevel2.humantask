@@ -1,0 +1,59 @@
+<humantask>
+    <cafienne:implementation name="VerifyInterviewLevel2" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_d8EC_Questions" name="Questions"/>
+        <input id="_xhn3_CandidateDetails" name="CandidateDetails"/>
+        <output id="_k2JU_Questions" name="Questions"/>
+        <output id="_CGYj_CandidateDetails" name="CandidateDetails"/>
+        <task-model>{
+  "schema":{
+    "type":"object",
+    "properties":{
+      "Questions":{
+        "title":"Inteview Level 2",
+        "type":"object",
+        "properties":{
+          "Q1":{
+            "title":"Tell me about yourself.",
+            "type":"string"
+          },
+          "Q2":{
+            "title":"Why do you want to work for our company?",
+            "type":"string"
+          },
+          "Q3":{
+            "title":"What are your greatest strengths and weaknesses?",
+            "type":"string"
+          },
+          "Q4":{
+            "title":"Why should we hire you?",
+            "type":"string"
+          },
+          "Q5":{
+            "title":"Are you willing to relocate?",
+            "type":"string"
+          }
+        }
+      },
+      "CandidateDetails":{
+        "title":"Approval Status",
+        "type":"object",
+        "properties":{
+          "isSelected":{
+            "title":"Approved?",
+            "type":"string",
+            "enumNames":[
+              "Approved",
+              "Rejected"
+            ],
+            "enum":[
+              "Approved",
+              "Rejected"
+            ]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

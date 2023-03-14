@@ -1,0 +1,44 @@
+<humantask>
+    <cafienne:implementation name="InterviewLevel2" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_TbL0_Questions" name="Questions"/>
+        <input id="_42ov_CandidateDetails" name="CandidateDetails"/>
+        <output id="_UvBA_Questions" name="Questions"/>
+        <output id="_AJY0_CandidateDetails" name="CandidateDetails"/>
+        <task-model>{
+  "schema":{
+    "type":"object",
+    "required" : [
+			"Questions"
+		],
+    "properties":{
+      "Questions":{
+        "title":"Inteview Level 2",
+        "type":"object",
+        "properties":{
+          "one":{
+            "title":"Tell me about yourself.",
+            "type":"string"
+          },
+          "two":{
+            "title":"Why do you want to work for our company?",
+            "type":"string"
+          },
+          "three":{
+            "title":"What are your greatest strengths and weaknesses?",
+            "type":"string"
+          },
+          "four":{
+            "title":"Why should we hire you?",
+            "type":"string"
+          },
+          "five":{
+            "title":"Are you willing to relocate?",
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

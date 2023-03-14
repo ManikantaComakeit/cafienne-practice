@@ -1,0 +1,26 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__kF26l_0">
+            <Bounds x="20" y="20" width="800" height="500"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__kF26l_0">
+            <Bounds x="50" y="180" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__kF26l_0">
+            <Bounds x="340" y="180" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__kF26l_1">
+            <Bounds x="650" y="180" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_kF26l_30">
+            <Bounds x="334" y="210" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_kF26l_32">
+            <Bounds x="644" y="210" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__kF26l_0" targetCMMNElementRef="_kF26l_30"/>
+        <CMMNEdge sourceCMMNElementRef="pi_pt__kF26l_0" targetCMMNElementRef="_kF26l_32">
+            <waypoint x="650" y="220"/>
+        </CMMNEdge>
+    </CMMNDiagram>
+</CMMNDI>

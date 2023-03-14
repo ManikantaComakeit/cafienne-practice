@@ -1,0 +1,57 @@
+<case id="WeatherInfo2.case" name="WeatherInfo2" expressionLanguage="spel" guid="_kF26l">
+    <documentation textFormat="text/plain">
+        <text>
+            <![CDATA[WeatherInfo2]]>
+        </text>
+    </documentation>
+    <caseFileModel>
+        <caseFileItem id="_kF26l_1" name="location" multiplicity="ExactlyOne" definitionRef="location.cfid"/>
+        <caseFileItem id="_kF26l_2" name="response" multiplicity="ExactlyOne" definitionRef="response_3.cfid">
+            <children>
+                <caseFileItem id="_kF26l_3" name="main" multiplicity="ExactlyOne" definitionRef="main.cfid"/>
+                <caseFileItem id="_kF26l_4" name="weather" multiplicity="ExactlyOne" definitionRef="weather.cfid"/>
+            </children>
+        </caseFileItem>
+    </caseFileModel>
+    <casePlanModel id="cm__kF26l_0" name="WeatherInfo2" autoComplete="true">
+        <planItem id="pi_ht__kF26l_0" name="Read Weather" definitionRef="ht__kF26l_0"/>
+        <planItem id="pi_pt__kF26l_0" name="Call Weather API" definitionRef="pt__kF26l_0">
+            <entryCriterion id="_kF26l_30" name="EntryCriterion_0" sentryRef="crit__kF26l_0"/>
+        </planItem>
+        <planItem id="pi_ht__kF26l_1" name="Display Weather" definitionRef="ht__kF26l_1">
+            <entryCriterion id="_kF26l_32" name="EntryCriterion_1" sentryRef="crit__kF26l_1"/>
+        </planItem>
+        <sentry id="crit__kF26l_0">
+            <planItemOnPart id="_kF26l_31" sourceRef="pi_ht__kF26l_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__kF26l_1">
+            <planItemOnPart id="_kF26l_33" sourceRef="pi_pt__kF26l_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__kF26l_0" name="Read Weather" isBlocking="true">
+            <inputs id="_kF26l_28" name="location" bindingRef="_kF26l_1"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="ReadWeather.humantask">
+                    <parameterMapping id="_kF26l_25" sourceRef="_kF26l_28" targetRef="_mv0W_Location"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__kF26l_1" name="Display Weather" isBlocking="true">
+            <inputs id="_kF26l_22" name="main" bindingRef="_kF26l_3"/>
+            <inputs id="_kF26l_23" name="weather" bindingRef="_kF26l_4"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="DisplayWeather.humantask">
+                    <parameterMapping id="_kF26l_17" sourceRef="_kF26l_22" targetRef="_v2Vo_main"/>
+                    <parameterMapping id="_kF26l_18" sourceRef="_kF26l_23" targetRef="_YZYF_weather"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__kF26l_0" name="Call Weather API" isBlocking="true" processRef="CallWeatherAPI.process">
+            <inputs id="_kF26l_10" name="location" bindingRef="_kF26l_1"/>
+            <parameterMapping id="_kF26l_7" sourceRef="_kF26l_10" targetRef="_RqPI_Loaction"/>
+        </processTask>
+    </casePlanModel>
+</case>

@@ -1,0 +1,143 @@
+<definitions>
+    <caseFileItemDefinition name="tempincel_1" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="tempincel_1.cfid">
+        <property name="tempCel" type="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
+    </caseFileItemDefinition>
+    <caseFileItemDefinition name="tempinfah_1" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="tempinfah_1.cfid">
+        <property name="tempFah" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    </caseFileItemDefinition>
+    <case id="TemperatureDemo2.case" name="TemperatureDemo2" expressionLanguage="spel">
+        <documentation textFormat="text/plain">
+            <text>
+                <![CDATA[TemperatureDemo2]]>
+            </text>
+        </documentation>
+        <caseFileModel>
+            <caseFileItem id="_lL1UK_1" name="TempInCel" multiplicity="ExactlyOne" definitionRef="tempincel_1.cfid"/>
+            <caseFileItem id="_lL1UK_4" name="TempInFah" multiplicity="ExactlyOne" definitionRef="tempinfah_1.cfid"/>
+        </caseFileModel>
+        <casePlanModel id="cm__lL1UK_0" name="TemperatureDemo2" autoComplete="true">
+            <planItem id="pi_pt__lL1UK_0" name="Convert Temperature to Fahrenheit" definitionRef="pt__lL1UK_0"/>
+            <planItem id="pi_ht__lL1UK_0" name="Show Temperature in Fahrenheit" definitionRef="ht__lL1UK_0">
+                <entryCriterion id="_lL1UK_14" name="EntryCriterion_0" sentryRef="crit__lL1UK_0"/>
+            </planItem>
+            <sentry id="crit__lL1UK_0">
+                <planItemOnPart id="_lL1UK_15" sourceRef="pi_pt__lL1UK_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <processTask id="pt__lL1UK_0" name="Convert Temperature to Fahrenheit" isBlocking="true" processRef="ConvertTemperaturetoFahrenheit.process">
+                <inputs id="_lL1UK_5" name="TempInCel" bindingRef="_lL1UK_1"/>
+                <outputs id="_lL1UK_8" name="TempInFah" bindingRef="_lL1UK_4"/>
+                <parameterMapping id="_lL1UK_2" sourceRef="_1MhE_response" targetRef="_lL1UK_8"/>
+                <parameterMapping id="_lL1UK_3" sourceRef="_lL1UK_5" targetRef="_AXyp_TempInCel"/>
+            </processTask>
+            <humanTask id="ht__lL1UK_0" name="Show Temperature in Fahrenheit" isBlocking="true">
+                <inputs id="_lL1UK_12" name="TempInCel" bindingRef="_lL1UK_1"/>
+                <inputs id="_lL1UK_13" name="TempInFah" bindingRef="_lL1UK_4"/>
+                <extensionElements mustUnderstand="false">
+                    <cafienne:implementation name="ShowTemperatureinFahrenheit" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="ShowTemperatureinFahrenheit.humantask">
+                        <input id="_GTHj_TempInCel" name="TempInCel"/>
+                        <input id="_ryou_TempInFah" name="TempInFah"/>
+                        <task-model>
+			{
+				"schema": {
+					"title": "Converted Temperature",
+					"type": "object",
+					"properties": {
+						"TempInCel": {
+							"title": "In Celcius",
+							"type": "object",
+							"properties": {
+								"tempCel": {
+									"type": "integer",
+									"title": "In celcius"
+								}
+                            }
+                        },
+                           "TempInFah": {
+							"title": "In Fahrenheit",
+							"type": "object",
+							"properties": {
+								"tempFah": {
+									"type": "string",
+									"title": "In Fahrenheit"
+								}
+							}
+						}
+					}
+				},
+              "uiSchema" : {
+       	"ui:order": [ "TempInCel", "TempInFah" ],
+		"TempInCel" : {
+			"tempCel" : {
+				"ui:readonly" : true
+			}
+		},
+		"TempInFah" : {
+			"tempFah" : {
+				"ui:readonly" : true
+			}
+		}
+	}
+			}</task-model>
+                        <parameterMapping id="_lL1UK_9" sourceRef="_lL1UK_12" targetRef="_GTHj_TempInCel"/>
+                        <parameterMapping id="_lL1UK_10" sourceRef="_lL1UK_13" targetRef="_ryou_TempInFah"/>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+        </casePlanModel>
+        <input id="_lL1UK_6" name="TempInCel" bindingRef="_lL1UK_1"/>
+        <extensionElements mustUnderstand="false">
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "TempInCel":{
+            "title":"Enter temp in Celcius",
+            "type":"object",
+            "properties":{
+              "tempCel":{
+                "type":"integer",
+                "title":"In Celcius"
+              }
+            }
+          }
+        }
+    }
+}</cafienne:start-case-model>
+        </extensionElements>
+    </case>
+    <process name="ConvertTemperaturetoFahrenheit" implementationType="http://www.omg.org/spec/CMMN/ProcessType/Unspecified" id="ConvertTemperaturetoFahrenheit.process">
+        <input id="_AXyp_TempInCel" name="TempInCel"/>
+        <output id="_1MhE_response" name="TempInFah"/>
+        <extensionElements>
+            <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition" async="true">
+                <url>http://172.21.0.1:3000/</url>
+                <method>POST</method>
+                <post-content>{"tempCel": "${TempInCel.tempCel}"}</post-content>
+                <http-headers>
+                    <http-header name="Content-Type">application/json</http-header>
+                </http-headers>
+                <parameterMapping sourceRef="responsePayload" targetRef="TempInFah"/>
+            </cafienne:implementation>
+        </extensionElements>
+    </process>
+    <CMMNDI>
+        <CMMNDiagram>
+            <CMMNShape cmmnElementRef="cm__lL1UK_0">
+                <Bounds x="30" y="50" width="800" height="500"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_pt__lL1UK_0">
+                <Bounds x="110" y="160" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_ht__lL1UK_0">
+                <Bounds x="530" y="160" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="_lL1UK_14">
+                <Bounds x="524" y="180" width="12" height="20"/>
+            </CMMNShape>
+            <CMMNEdge sourceCMMNElementRef="pi_pt__lL1UK_0" targetCMMNElementRef="_lL1UK_14"/>
+        </CMMNDiagram>
+    </CMMNDI>
+</definitions>

@@ -1,0 +1,158 @@
+<definitions>
+    <caseFileItemDefinition name="location" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="location_1.cfid">
+        <property name="place" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    </caseFileItemDefinition>
+    <caseFileItemDefinition name="weather_details" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="weather_details.cfid">
+        <property name="temp" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    </caseFileItemDefinition>
+    <case id="weather_checker.case" name="weather_checker" expressionLanguage="spel">
+        <caseFileModel>
+            <caseFileItem id="_8mNSy_2" name="location" multiplicity="ExactlyOne" definitionRef="location_1.cfid"/>
+            <caseFileItem id="_8mNSy_13" name="weather_details" multiplicity="ExactlyOne" definitionRef="weather_details.cfid"/>
+        </caseFileModel>
+        <casePlanModel id="cm__8mNSy_0" name="weather_checker" autoComplete="true">
+            <planItem id="pi_pt__8mNSy_0" name="send weahter api request" definitionRef="pt__8mNSy_0">
+                <entryCriterion id="_8mNSy_9" name="EntryCriterion_0" sentryRef="crit__8mNSy_0"/>
+            </planItem>
+            <planItem id="pi_ht__8mNSy_1" name="Display the temperature" definitionRef="ht__8mNSy_1">
+                <entryCriterion id="_8mNSy_17" name="EntryCriterion_1" sentryRef="crit__8mNSy_1"/>
+            </planItem>
+            <planItem id="pi_ht__8mNSy_0" name="enterlocation" definitionRef="ht__8mNSy_0"/>
+            <sentry id="crit__8mNSy_1">
+                <planItemOnPart id="_8mNSy_18" sourceRef="pi_pt__8mNSy_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__8mNSy_0">
+                <planItemOnPart id="_8mNSy_10" sourceRef="pi_ht__8mNSy_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <humanTask id="ht__8mNSy_1" name="Display the temperature" isBlocking="true">
+                <inputs id="_8mNSy_21" name="weather_details" bindingRef="_8mNSy_13"/>
+                <extensionElements mustUnderstand="false">
+                    <cafienne:implementation name="Displaythetemperature" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="Displaythetemperature.humantask">
+                        <input id="_VHPq_weather_details" name="weather_details"/>
+                        <task-model>{
+  "schema":{
+    "title":"weahter conversion",
+    "type":"object",
+    "properties":{
+      "weather_details":{
+        "title":" ",
+    	"type":"object",
+        "properties":{
+          "temp":{
+            "title":"here is the temperature",
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+                        <parameterMapping id="_8mNSy_19" sourceRef="_8mNSy_21" targetRef="_VHPq_weather_details"/>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+            <humanTask id="ht__8mNSy_0" name="enterlocation" isBlocking="true">
+                <extensionElements mustUnderstand="false">
+                    <cafienne:implementation name="enterlocation" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="enterlocation.humantask">
+                        <input id="_24QN_location" name="location"/>
+                        <output id="_z168_location" name="location"/>
+                        <task-model>{
+  "schema":{
+    "title":"weahter conversion",
+    "type":"object",
+    "properties":{
+      "location":{
+        "title":" ",
+    	"type":"object",
+        "properties":{
+          "place":{
+            "title":"enter a place",
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+            <processTask id="pt__8mNSy_0" name="send weahter api request" isBlocking="true" processRef="sendtherequest.process">
+                <inputs id="_8mNSy_12" name="location" bindingRef="_8mNSy_2"/>
+                <outputs id="_8mNSy_14" name="weather_details" bindingRef="_8mNSy_13">
+                    <extensionElements mustUnderstand="false">
+                        <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
+                    </extensionElements>
+                </outputs>
+                <parameterMapping id="_8mNSy_7" sourceRef="_8mNSy_12" targetRef="_Wgbm_location_city"/>
+                <parameterMapping id="_8mNSy_8" sourceRef="_FzHg_weather_response" targetRef="_8mNSy_14">
+                    <transformation id="_8mNSy_0">
+                        <body>
+                            <![CDATA[weather_details_resp.main]]>
+                        </body>
+                    </transformation>
+                </parameterMapping>
+            </processTask>
+        </casePlanModel>
+        <input id="_8mNSy_15" name="location" bindingRef="_8mNSy_2"/>
+        <extensionElements mustUnderstand="false">
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema":{
+    "title":"weahter conversion",
+    "type":"object",
+    "properties":{
+      "location":{
+        "title":" ",
+    	"type":"object",
+        "properties":{
+          "place":{
+            "title":"enter a place",
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}</cafienne:start-case-model>
+        </extensionElements>
+    </case>
+    <process name="sendtherequest" implementationType="http://www.omg.org/spec/CMMN/ProcessType/Unspecified" id="sendtherequest.process">
+        <input id="_Wgbm_location_city" name="location"/>
+        <output id="_FzHg_weather_response" name="weather_details_resp"/>
+        <extensionElements>
+            <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition">
+                <url>https://api.openweathermap.org/data/2.5/weather?q=${location.place}&amp;appid=39f6a4870ad18d55c04b368733efb50f</url>
+                <method>GET</method>
+                <parameterMapping sourceRef="responsePayload" targetRef="weather_details_resp"/>
+            </cafienne:implementation>
+        </extensionElements>
+    </process>
+    <CMMNDI>
+        <CMMNDiagram>
+            <CMMNShape cmmnElementRef="cm__8mNSy_0">
+                <Bounds x="20" y="20" width="800" height="500"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_pt__8mNSy_0">
+                <Bounds x="340" y="200" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_ht__8mNSy_1">
+                <Bounds x="580" y="200" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="_8mNSy_17">
+                <Bounds x="574" y="230" width="12" height="20"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_ht__8mNSy_0">
+                <Bounds x="120" y="200" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="_8mNSy_9">
+                <Bounds x="334" y="230" width="12" height="20"/>
+            </CMMNShape>
+            <CMMNEdge sourceCMMNElementRef="pi_pt__8mNSy_0" targetCMMNElementRef="_8mNSy_17"/>
+            <CMMNEdge sourceCMMNElementRef="pi_ht__8mNSy_0" targetCMMNElementRef="_8mNSy_9"/>
+        </CMMNDiagram>
+    </CMMNDI>
+</definitions>

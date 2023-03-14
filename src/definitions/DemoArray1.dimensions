@@ -1,0 +1,17 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__AhqhK_0">
+            <Bounds x="30" y="50" width="800" height="500"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__AhqhK_0">
+            <Bounds x="160" y="200" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__AhqhK_0">
+            <Bounds x="520" y="200" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_AhqhK_6">
+            <Bounds x="514" y="230" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="pi_pt__AhqhK_0" targetCMMNElementRef="_AhqhK_6"/>
+    </CMMNDiagram>
+</CMMNDI>

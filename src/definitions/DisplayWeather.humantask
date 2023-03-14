@@ -1,0 +1,65 @@
+<humantask>
+    <cafienne:implementation name="DisplayWeather" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_v2Vo_main" name="temperature"/>
+        <input id="_YZYF_weather" name="weather"/>
+        <input id="_yRKf_user" name="user"/>
+        <task-model>{
+    "schema":{
+        "title": "",
+        "type": "object",
+            "properties":{
+              "temperature":{
+                "type":"object",
+                "title":"Temperature",
+                "properties":{
+                  "temp":{
+                    "type":"string",
+                    "title":""
+              }
+            }
+          },
+              "weather":{
+                "type":"object",
+                "title":"Weather",
+                "properties":{
+                  "id":{
+                    "type":"integer",
+                    "title":"id"
+              },
+                  "main":{
+                    "type":"string",
+                    "title":"main"
+              },
+                  "description":{
+                    "type":"string",
+                    "title":"desc"
+              },
+                  "icon":{
+                    "type":"string",
+                    "title":"icon"
+              }
+            }
+          },
+              "user":{
+                "type":"object",
+                "title":"User",
+                "properties":{
+                  "name":{
+                    "type":"string",
+                    "title":""
+              }
+            }
+          }
+        }
+    },
+  "uiSchema" : {
+		"weather" : {
+				"ui:readonly" : true
+		},
+        "user":{
+          "ui:readonly" : true
+        }
+	}
+}</task-model>
+    </cafienne:implementation>
+</humantask>

@@ -1,0 +1,16 @@
+<process name="VerifyInterviewLevel1" implementationType="http://www.omg.org/spec/CMMN/ProcessType/Unspecified">
+    <input id="_6j9L_CandidateDetails" name="CandidateDetails"/>
+    <input id="_bn2Y_Level1Questions" name="Level1Questions"/>
+    <output id="_BR33_CandidateDetails" name="CandidateDetails"/>
+    <extensionElements>
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition" async="true">
+            <url>http://10.9.6.7:8080/interview1</url>
+            <method>POST</method>
+            <post-content>{"candidate":${CandidateDetails},"answers":${Level1Questions}}</post-content>
+            <http-headers>
+                <http-header name="Content-Type">application/json</http-header>
+            </http-headers>
+            <parameterMapping sourceRef="responsePayload" targetRef="CandidateDetails"/>
+        </cafienne:implementation>
+    </extensionElements>
+</process>

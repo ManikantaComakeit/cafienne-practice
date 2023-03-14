@@ -1,0 +1,43 @@
+<case id="DemoArray1.case" name="DemoArray1" expressionLanguage="spel" guid="_AhqhK">
+    <documentation textFormat="text/plain">
+        <text>
+            <![CDATA[DemoArray1]]>
+        </text>
+    </documentation>
+    <caseFileModel>
+        <caseFileItem id="_AhqhK_2" name="array" multiplicity="ZeroOrMore" definitionRef="array.cfid">
+            <children>
+                <caseFileItem id="_AhqhK_9" name="arr" multiplicity="ZeroOrMore" definitionRef="arr.cfid"/>
+            </children>
+        </caseFileItem>
+    </caseFileModel>
+    <casePlanModel id="cm__AhqhK_0" name="DemoArray1" autoComplete="true">
+        <planItem id="pi_pt__AhqhK_0" name="ArrProcess1" definitionRef="pt__AhqhK_0"/>
+        <planItem id="pi_ht__AhqhK_0" name="ArrHuman1" definitionRef="ht__AhqhK_0">
+            <entryCriterion id="_AhqhK_6" name="EntryCriterion_0" sentryRef="crit__AhqhK_0"/>
+        </planItem>
+        <sentry id="crit__AhqhK_0">
+            <planItemOnPart id="_AhqhK_7" sourceRef="pi_pt__AhqhK_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__AhqhK_0" name="ArrHuman1" isBlocking="true">
+            <inputs id="_AhqhK_10" name="array" bindingRef="_AhqhK_2"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="ArrHuman1.humantask">
+                    <parameterMapping id="_AhqhK_4" sourceRef="_AhqhK_10" targetRef="_y2qB_arr"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__AhqhK_0" name="ArrProcess1" isBlocking="true" processRef="ArrProcess1.process">
+            <outputs id="_AhqhK_8" name="array" bindingRef="_AhqhK_2">
+                <bindingRefinement id="_AhqhK_12">
+                    <body>
+                        <![CDATA[update-indexed]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <parameterMapping id="_AhqhK_3" sourceRef="_XeVh_arr" targetRef="_AhqhK_8"/>
+        </processTask>
+    </casePlanModel>
+</case>

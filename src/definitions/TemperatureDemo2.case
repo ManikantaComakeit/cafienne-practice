@@ -1,0 +1,59 @@
+<case id="TemperatureDemo2.case" name="TemperatureDemo2" expressionLanguage="spel" guid="_lL1UK">
+    <documentation textFormat="text/plain">
+        <text>
+            <![CDATA[TemperatureDemo2]]>
+        </text>
+    </documentation>
+    <caseFileModel>
+        <caseFileItem id="_lL1UK_1" name="TempInCel" multiplicity="ExactlyOne" definitionRef="tempincel_1.cfid"/>
+        <caseFileItem id="_lL1UK_4" name="TempInFah" multiplicity="ExactlyOne" definitionRef="tempinfah_1.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__lL1UK_0" name="TemperatureDemo2" autoComplete="true">
+        <planItem id="pi_pt__lL1UK_0" name="Convert Temperature to Fahrenheit" definitionRef="pt__lL1UK_0"/>
+        <planItem id="pi_ht__lL1UK_0" name="Show Temperature in Fahrenheit" definitionRef="ht__lL1UK_0">
+            <entryCriterion id="_lL1UK_14" name="EntryCriterion_0" sentryRef="crit__lL1UK_0"/>
+        </planItem>
+        <sentry id="crit__lL1UK_0">
+            <planItemOnPart id="_lL1UK_15" sourceRef="pi_pt__lL1UK_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <processTask id="pt__lL1UK_0" name="Convert Temperature to Fahrenheit" isBlocking="true" processRef="ConvertTemperaturetoFahrenheit.process">
+            <inputs id="_lL1UK_5" name="TempInCel" bindingRef="_lL1UK_1"/>
+            <outputs id="_lL1UK_8" name="TempInFah" bindingRef="_lL1UK_4"/>
+            <parameterMapping id="_lL1UK_2" sourceRef="_1MhE_response" targetRef="_lL1UK_8"/>
+            <parameterMapping id="_lL1UK_3" sourceRef="_lL1UK_5" targetRef="_AXyp_TempInCel"/>
+        </processTask>
+        <humanTask id="ht__lL1UK_0" name="Show Temperature in Fahrenheit" isBlocking="true">
+            <inputs id="_lL1UK_12" name="TempInCel" bindingRef="_lL1UK_1"/>
+            <inputs id="_lL1UK_13" name="TempInFah" bindingRef="_lL1UK_4"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="ShowTemperatureinFahrenheit.humantask">
+                    <parameterMapping id="_lL1UK_9" sourceRef="_lL1UK_12" targetRef="_GTHj_TempInCel"/>
+                    <parameterMapping id="_lL1UK_10" sourceRef="_lL1UK_13" targetRef="_ryou_TempInFah"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+    </casePlanModel>
+    <input id="_lL1UK_6" name="TempInCel" bindingRef="_lL1UK_1"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "TempInCel":{
+            "title":"Enter temp in Celcius",
+            "type":"object",
+            "properties":{
+              "tempCel":{
+                "type":"integer",
+                "title":"In Celcius"
+              }
+            }
+          }
+        }
+    }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

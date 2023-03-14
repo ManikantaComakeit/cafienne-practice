@@ -1,0 +1,194 @@
+2023-03-14 07:14:45.019 GMT [WARN] from org.cafienne.infrastructure.config.util.SystemConfig$ in main - 
+
+############################################################################
+
+	WARNING - file:/opt/cafienne/bin/../conf/local.conf, line 163
+	Found deprecated configuration property, please drop the line.
+
+		tagging = org.cafienne.actormodel.tagging.CaseTaggingEventAdapter	
+
+############################################################################
+
+
+2023-03-14 07:14:45.023 GMT [WARN] from org.cafienne.infrastructure.config.util.SystemConfig$ in main - 
+
+#######################################################################
+
+	WARNING - file:/opt/cafienne/bin/../conf/local.conf, line 167
+	Found deprecated configuration property, please drop the line.
+
+		org.cafienne.actormodel.event.ModelEvent = tagging	
+
+#######################################################################
+
+
+2023-03-14 07:14:45.045 GMT [WARN] from org.cafienne.infrastructure.config.util.SystemConfig$ in main - 
+
+###############################################################################################################
+
+	WARNING - Case Service runs in developer mode (the debug route to get all events is open for anyone!)	
+
+###############################################################################################################
+
+
+2023-03-14 07:14:45.878 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Starting case system in local mode, opening router for process-tasks
+2023-03-14 07:14:45.878 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Starting case system in local mode, opening router for cases
+2023-03-14 07:14:45.879 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-8 - Starting case system in local mode, opening router for tenants
+2023-03-14 07:14:45.879 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Starting case system in local mode, opening router for default-router
+2023-03-14 07:14:45.879 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-9 - Starting case system in local mode, opening router for consent-groups
+2023-03-14 07:14:45.883 GMT [INFO] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in main - Checking presence of bootstrap configuration for the case system
+2023-03-14 07:14:45.884 GMT [WARN] from org.cafienne.infrastructure.config.PlatformConfig in main - Property bootstrap-file is deprecated. Please use bootstrap-tenants instead.
+2023-03-14 07:14:45.885 GMT [INFO] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in main - Bootstrapping tenant 'world' from file /opt/cafienne/bootstrap/world.tenant.conf
+2023-03-14 07:14:45.886 GMT [WARN] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in main - Bootstrap tenant 'world' in file 'world.tenant.conf' uses deprecated property 'owners = ["CgRsYW5hEgVsb2NhbA", "CgRzdXp5EgVsb2NhbA"]'. Use 'isOwner = true' inside the designated users instead.
+2023-03-14 07:14:45.896 GMT [WARN] from org.cafienne.actormodel.tagging.CaseTaggingEventAdapter in Cafienne-Case-System-akka.actor.default-dispatcher-9 - You can safely remove the CaseTaggingEventAdapter properties in the read journal configuration
+2023-03-14 07:14:45.897 GMT [INFO] from org.cafienne.infrastructure.config.ModelActorConfig in main - CommandRoutes wait a maximum of 60 seconds for a response upon their requests
+2023-03-14 07:14:45.916 GMT [WARN] from org.cafienne.infrastructure.config.QueryDBConfig in Cafienne-Case-System-akka.actor.default-dispatcher-9 - Obtaining read-journal settings from 'cafienne.querydb.read-journal' = inmemory-read-journal is deprecated; please place these settings in 'cafienne.read-journal' instead
+2023-03-14 07:14:46.029 GMT [INFO] from org.cafienne.tenant.TenantActor in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Recovery of TenantActor world completed
+2023-03-14 07:14:46.029 GMT [WARN] from org.cafienne.timerservice.TimerService in Cafienne-Case-System-akka.actor.default-dispatcher-12 - Starting Timer Service - loading timers every 1 hour for a window of 65 minutes ahead
+2023-03-14 07:14:46.043 GMT [INFO] from org.cafienne.infrastructure.config.ModelActorConfig in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Individual Case instances will be removed from Akka memory after they have been idle for 600 seconds
+2023-03-14 07:14:46.077 GMT [WARN] from org.cafienne.timerservice.TimerEventSink in scala-execution-context-global-31 - Starting to read 'cafienne:timer' events from offset NoOffset
+2023-03-14 07:14:46.227 GMT [WARN] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Completed creation of bootstrap tenant 'world'
+2023-03-14 07:14:46.513 GMT [INFO] from org.flywaydb.core.internal.license.VersionPrinter in main - Flyway Community Edition 7.2.1 by Redgate
+2023-03-14 07:14:46.732 GMT [INFO] from org.flywaydb.core.internal.database.base.DatabaseType in main - Database: jdbc:hsqldb:mem:mymemdb (HSQL Database Engine 2.7)
+2023-03-14 07:14:46.740 GMT [WARN] from org.flywaydb.core.internal.database.base.Database in main - Flyway upgrade recommended: org.flywaydb.core.internal.database.hsqldb.HSQLDBDatabaseType@31efacad 2.7 is newer than this version of Flyway and support has not been tested. The latest supported version of org.flywaydb.core.internal.database.hsqldb.HSQLDBDatabaseType@31efacad is 2.5.
+2023-03-14 07:14:46.775 GMT [INFO] from org.flywaydb.core.internal.command.DbValidate in main - Successfully validated 8 migrations (execution time 00:00.016s)
+2023-03-14 07:14:46.784 GMT [INFO] from org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory in main - Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2023-03-14 07:14:46.813 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Current version of schema "PUBLIC": << Empty Schema >>
+2023-03-14 07:14:46.815 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.0.0 - ReversibleMigrationSeq"
+2023-03-14 07:14:46.817 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.875 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.5"
+2023-03-14 07:14:46.875 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.891 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.6 - MigrationSeq"
+2023-03-14 07:14:46.891 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.918 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.10 - TableMigration"
+2023-03-14 07:14:46.918 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.927 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.11 - ReversibleMigrationSeq"
+2023-03-14 07:14:46.927 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.935 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.16 - MigrationSeq"
+2023-03-14 07:14:46.935 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.951 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.18 - TableMigration"
+2023-03-14 07:14:46.951 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.958 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.22 - TableMigration"
+2023-03-14 07:14:46.958 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 07:14:46.964 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Successfully applied 8 migrations to schema "PUBLIC" (execution time 00:00.155s)
+2023-03-14 07:14:47.005 GMT [WARN] from org.cafienne.querydb.materializer.cases.CaseEventSink in scala-execution-context-global-31 - Starting to read 'cafienne:case' events from offset NoOffset
+2023-03-14 07:14:47.005 GMT [WARN] from org.cafienne.querydb.materializer.tenant.TenantEventSink in scala-execution-context-global-31 - Starting to read 'cafienne:tenant' events from offset NoOffset
+2023-03-14 07:14:47.005 GMT [WARN] from org.cafienne.querydb.materializer.consentgroup.ConsentGroupEventSink in scala-execution-context-global-49 - Starting to read 'cafienne:consentgroup' events from offset NoOffset
+2023-03-14 07:14:47.100 GMT [INFO] from org.cafienne.infrastructure.config.api.SecurityConfig in main - Running with Identity Cache of size 1000
+2023-03-14 07:14:47.129 GMT [INFO] from org.cafienne.infrastructure.config.api.SecurityConfig in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Running with User Token Cache of size 1000
+2023-03-14 07:14:47.330 GMT [WARN] from org.cafienne.storage.StorageCoordinator in Cafienne-Case-System-akka.actor.default-dispatcher-8 - Launching Storage Coordination Service
+2023-03-14 07:14:47.332 GMT [INFO] from org.cafienne.storage.StorageCoordinator in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Completed re-activating Storage Deletion Actors
+2023-03-14 07:14:47.338 GMT [INFO] from org.cafienne.service.akkahttp.CafienneHttpServer in main - Starting Cafienne HTTP Server - loading swagger documentation of the routes
+2023-03-14 07:14:47.346 GMT [INFO] from org.cafienne.authentication.OIDCConfiguration in main - Reading static info for IDP http://localhost:5556/dex
+2023-03-14 07:14:47.352 GMT [WARN] from org.cafienne.authentication.OIDCConfiguration$ in main - Cafienne HTTP Server is configured with 1 identity providers: 
+- http://localhost:5556/dex
+2023-03-14 07:14:47.354 GMT [INFO] from org.cafienne.service.akkahttp.CafienneHttpServer in main - Starting Cafienne HTTP Server - starting akka http on 0.0.0.0:2027
+2023-03-14 07:14:47.654 GMT [WARN] from org.cafienne.service.Main$ in Cafienne-Case-System-akka.actor.default-dispatcher-15 - Running Cafienne version: {
+  "organization" : "org.cafienne",
+  "builtAtMillis" : 1675279708238,
+  "name" : "Cafienne Engine",
+  "gitUncommittedChanges" : false,
+  "description" : "This engine is built on commit [18b03be1ce69e541c84ea96ad21e7c6c9febac84] in branch [main] having 7 additional commits on top of version [1.1.24].",
+  "gitHeadCommit" : "Some(18b03be1ce69e541c84ea96ad21e7c6c9febac84)",
+  "gitCurrentBranch" : "main",
+  "version" : "1.1.25-SNAPSHOT",
+  "builtAtString" : "2023-02-01 19:28:28.238+0000"
+}
+2023-03-14 07:14:47.655 GMT [WARN] from org.cafienne.service.Main$ in Cafienne-Case-System-akka.actor.default-dispatcher-15 - Akka HTTP Server available at ServerBinding(/0.0.0.0:2027)
+2023-03-14 09:41:52.405 GMT [WARN] from org.cafienne.infrastructure.config.util.SystemConfig$ in main - 
+
+############################################################################
+
+	WARNING - file:/opt/cafienne/bin/../conf/local.conf, line 163
+	Found deprecated configuration property, please drop the line.
+
+		tagging = org.cafienne.actormodel.tagging.CaseTaggingEventAdapter	
+
+############################################################################
+
+
+2023-03-14 09:41:52.410 GMT [WARN] from org.cafienne.infrastructure.config.util.SystemConfig$ in main - 
+
+#######################################################################
+
+	WARNING - file:/opt/cafienne/bin/../conf/local.conf, line 167
+	Found deprecated configuration property, please drop the line.
+
+		org.cafienne.actormodel.event.ModelEvent = tagging	
+
+#######################################################################
+
+
+2023-03-14 09:41:52.438 GMT [WARN] from org.cafienne.infrastructure.config.util.SystemConfig$ in main - 
+
+###############################################################################################################
+
+	WARNING - Case Service runs in developer mode (the debug route to get all events is open for anyone!)	
+
+###############################################################################################################
+
+
+2023-03-14 09:41:53.307 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Starting case system in local mode, opening router for process-tasks
+2023-03-14 09:41:53.307 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-6 - Starting case system in local mode, opening router for cases
+2023-03-14 09:41:53.308 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-8 - Starting case system in local mode, opening router for tenants
+2023-03-14 09:41:53.308 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Starting case system in local mode, opening router for default-router
+2023-03-14 09:41:53.308 GMT [INFO] from org.cafienne.system.router.LocalRouter in Cafienne-Case-System-akka.actor.default-dispatcher-9 - Starting case system in local mode, opening router for consent-groups
+2023-03-14 09:41:53.313 GMT [INFO] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in main - Checking presence of bootstrap configuration for the case system
+2023-03-14 09:41:53.313 GMT [WARN] from org.cafienne.infrastructure.config.PlatformConfig in main - Property bootstrap-file is deprecated. Please use bootstrap-tenants instead.
+2023-03-14 09:41:53.314 GMT [INFO] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in main - Bootstrapping tenant 'world' from file /opt/cafienne/bootstrap/world.tenant.conf
+2023-03-14 09:41:53.315 GMT [WARN] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in main - Bootstrap tenant 'world' in file 'world.tenant.conf' uses deprecated property 'owners = ["CgRsYW5hEgVsb2NhbA", "CgRzdXp5EgVsb2NhbA"]'. Use 'isOwner = true' inside the designated users instead.
+2023-03-14 09:41:53.328 GMT [WARN] from org.cafienne.actormodel.tagging.CaseTaggingEventAdapter in Cafienne-Case-System-akka.actor.default-dispatcher-9 - You can safely remove the CaseTaggingEventAdapter properties in the read journal configuration
+2023-03-14 09:41:53.328 GMT [INFO] from org.cafienne.infrastructure.config.ModelActorConfig in main - CommandRoutes wait a maximum of 60 seconds for a response upon their requests
+2023-03-14 09:41:53.350 GMT [WARN] from org.cafienne.infrastructure.config.QueryDBConfig in Cafienne-Case-System-akka.actor.default-dispatcher-9 - Obtaining read-journal settings from 'cafienne.querydb.read-journal' = inmemory-read-journal is deprecated; please place these settings in 'cafienne.read-journal' instead
+2023-03-14 09:41:53.479 GMT [WARN] from org.cafienne.timerservice.TimerService in Cafienne-Case-System-akka.actor.default-dispatcher-12 - Starting Timer Service - loading timers every 1 hour for a window of 65 minutes ahead
+2023-03-14 09:41:53.479 GMT [INFO] from org.cafienne.tenant.TenantActor in Cafienne-Case-System-akka.actor.default-dispatcher-13 - Recovery of TenantActor world completed
+2023-03-14 09:41:53.499 GMT [INFO] from org.cafienne.infrastructure.config.ModelActorConfig in Cafienne-Case-System-akka.actor.default-dispatcher-13 - Individual Case instances will be removed from Akka memory after they have been idle for 600 seconds
+2023-03-14 09:41:53.514 GMT [WARN] from org.cafienne.timerservice.TimerEventSink in scala-execution-context-global-31 - Starting to read 'cafienne:timer' events from offset NoOffset
+2023-03-14 09:41:53.664 GMT [WARN] from org.cafienne.system.bootstrap.BootstrapPlatformConfiguration$ in Cafienne-Case-System-akka.actor.default-dispatcher-9 - Completed creation of bootstrap tenant 'world'
+2023-03-14 09:41:53.989 GMT [INFO] from org.flywaydb.core.internal.license.VersionPrinter in main - Flyway Community Edition 7.2.1 by Redgate
+2023-03-14 09:41:54.197 GMT [INFO] from org.flywaydb.core.internal.database.base.DatabaseType in main - Database: jdbc:hsqldb:mem:mymemdb (HSQL Database Engine 2.7)
+2023-03-14 09:41:54.202 GMT [WARN] from org.flywaydb.core.internal.database.base.Database in main - Flyway upgrade recommended: org.flywaydb.core.internal.database.hsqldb.HSQLDBDatabaseType@7d9c45ee 2.7 is newer than this version of Flyway and support has not been tested. The latest supported version of org.flywaydb.core.internal.database.hsqldb.HSQLDBDatabaseType@7d9c45ee is 2.5.
+2023-03-14 09:41:54.247 GMT [INFO] from org.flywaydb.core.internal.command.DbValidate in main - Successfully validated 8 migrations (execution time 00:00.027s)
+2023-03-14 09:41:54.259 GMT [INFO] from org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory in main - Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2023-03-14 09:41:54.298 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Current version of schema "PUBLIC": << Empty Schema >>
+2023-03-14 09:41:54.302 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.0.0 - ReversibleMigrationSeq"
+2023-03-14 09:41:54.303 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.387 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.5"
+2023-03-14 09:41:54.388 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.401 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.6 - MigrationSeq"
+2023-03-14 09:41:54.402 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.431 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.10 - TableMigration"
+2023-03-14 09:41:54.432 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.447 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.11 - ReversibleMigrationSeq"
+2023-03-14 09:41:54.447 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.460 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.16 - MigrationSeq"
+2023-03-14 09:41:54.461 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.478 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.18 - TableMigration"
+2023-03-14 09:41:54.478 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.485 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Migrating schema "PUBLIC" to version "1.1.22 - TableMigration"
+2023-03-14 09:41:54.485 GMT [WARN] from slick.util.AsyncExecutor in main - Having maxConnection > maxThreads can result in deadlocks if transactions or database locks are used.
+2023-03-14 09:41:54.493 GMT [INFO] from org.flywaydb.core.internal.command.DbMigrate in main - Successfully applied 8 migrations to schema "PUBLIC" (execution time 00:00.204s)
+2023-03-14 09:41:54.538 GMT [WARN] from org.cafienne.querydb.materializer.tenant.TenantEventSink in scala-execution-context-global-31 - Starting to read 'cafienne:tenant' events from offset NoOffset
+2023-03-14 09:41:54.538 GMT [WARN] from org.cafienne.querydb.materializer.consentgroup.ConsentGroupEventSink in scala-execution-context-global-31 - Starting to read 'cafienne:consentgroup' events from offset NoOffset
+2023-03-14 09:41:54.539 GMT [WARN] from org.cafienne.querydb.materializer.cases.CaseEventSink in scala-execution-context-global-49 - Starting to read 'cafienne:case' events from offset NoOffset
+2023-03-14 09:41:54.659 GMT [INFO] from org.cafienne.infrastructure.config.api.SecurityConfig in Cafienne-Case-System-akka.actor.default-dispatcher-12 - Running with User Token Cache of size 1000
+2023-03-14 09:41:54.659 GMT [INFO] from org.cafienne.infrastructure.config.api.SecurityConfig in main - Running with Identity Cache of size 1000
+2023-03-14 09:41:54.895 GMT [WARN] from org.cafienne.storage.StorageCoordinator in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Launching Storage Coordination Service
+2023-03-14 09:41:54.897 GMT [INFO] from org.cafienne.storage.StorageCoordinator in Cafienne-Case-System-akka.actor.default-dispatcher-10 - Completed re-activating Storage Deletion Actors
+2023-03-14 09:41:54.904 GMT [INFO] from org.cafienne.service.akkahttp.CafienneHttpServer in main - Starting Cafienne HTTP Server - loading swagger documentation of the routes
+2023-03-14 09:41:54.915 GMT [INFO] from org.cafienne.authentication.OIDCConfiguration in main - Reading static info for IDP http://localhost:5556/dex
+2023-03-14 09:41:54.925 GMT [WARN] from org.cafienne.authentication.OIDCConfiguration$ in main - Cafienne HTTP Server is configured with 1 identity providers: 
+- http://localhost:5556/dex
+2023-03-14 09:41:54.930 GMT [INFO] from org.cafienne.service.akkahttp.CafienneHttpServer in main - Starting Cafienne HTTP Server - starting akka http on 0.0.0.0:2027
+2023-03-14 09:41:55.294 GMT [WARN] from org.cafienne.service.Main$ in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Running Cafienne version: {
+  "organization" : "org.cafienne",
+  "builtAtMillis" : 1675279708238,
+  "name" : "Cafienne Engine",
+  "gitUncommittedChanges" : false,
+  "description" : "This engine is built on commit [18b03be1ce69e541c84ea96ad21e7c6c9febac84] in branch [main] having 7 additional commits on top of version [1.1.24].",
+  "gitHeadCommit" : "Some(18b03be1ce69e541c84ea96ad21e7c6c9febac84)",
+  "gitCurrentBranch" : "main",
+  "version" : "1.1.25-SNAPSHOT",
+  "builtAtString" : "2023-02-01 19:28:28.238+0000"
+}
+2023-03-14 09:41:55.294 GMT [WARN] from org.cafienne.service.Main$ in Cafienne-Case-System-akka.actor.default-dispatcher-7 - Akka HTTP Server available at ServerBinding(/0.0.0.0:2027)

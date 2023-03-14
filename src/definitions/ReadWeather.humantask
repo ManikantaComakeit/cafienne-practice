@@ -1,0 +1,24 @@
+<humantask>
+    <cafienne:implementation name="ReadWeather" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_mv0W_Location" name="Location"/>
+        <output id="_eHYW_Location" name="Location"/>
+        <task-model>{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "Location":{
+            "title":"Enter place",
+            "type":"object",
+            "properties":{
+              "place":{
+                "type":"string",
+                "title":""
+              }
+            }
+          }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

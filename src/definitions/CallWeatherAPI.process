@@ -1,0 +1,14 @@
+<process name="CallWeatherAPI" implementationType="http://www.omg.org/spec/CMMN/ProcessType/Unspecified">
+    <input id="_RqPI_Loaction" name="Location"/>
+    <output id="_PcgK_response" name="response"/>
+    <extensionElements>
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition" async="true">
+            <url>https://api.openweathermap.org/data/2.5/weather?q=${Location.place}&amp;appid=39f6a4870ad18d55c04b368733efb50f</url>
+            <method>GET</method>
+            <http-headers>
+                <http-header name="Content-Type">application/json</http-header>
+            </http-headers>
+            <parameterMapping sourceRef="responsePayload" targetRef="response"/>
+        </cafienne:implementation>
+    </extensionElements>
+</process>

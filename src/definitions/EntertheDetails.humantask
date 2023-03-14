@@ -1,0 +1,43 @@
+<humantask>
+    <cafienne:implementation name="EntertheDetails" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_gUP3_CandidateDetails" name="CandidateDetails"/>
+        <output id="_WJSl_CandidateDetails" name="CandidateDetails"/>
+        <task-model>{
+  "schema":{
+    "type":"object",
+    "properties":{
+      "CandidateDetails":{
+        "title":"Enter your Details:",
+        "type":"object",
+        "properties":{
+          "name":{
+            "title":"Enter your name:",
+            "type":"string"
+          },
+          "CollegeName":{
+            "title":"Enter your college name:",
+            "type":"string"
+          },
+          "BtechPercentage":{
+            "title":"Enter your btech percentage:",
+            "type":"string"
+          },
+          "IntermediatePercentage":{
+            "title":"Enter your inter percentage:",
+            "type":"string"
+          },
+          "TenthPercentage":{
+            "title":"Enter your tenth percentage:",
+            "type":"string"
+          },
+          "Skills":{
+            "title":"Enter your Skills follwed by comma(,):",
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

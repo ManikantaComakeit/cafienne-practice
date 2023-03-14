@@ -1,0 +1,4 @@
+<caseFileItemDefinition name="response_1" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="cod" type="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
+    <property name="message" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

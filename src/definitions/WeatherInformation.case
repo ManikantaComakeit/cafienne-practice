@@ -1,0 +1,64 @@
+<case id="WeatherInformation.case" name="WeatherInformation" expressionLanguage="spel" guid="_Biv9d">
+    <documentation textFormat="text/plain">
+        <text>
+            <![CDATA[WeatherInformation]]>
+        </text>
+    </documentation>
+    <caseFileModel>
+        <caseFileItem id="_Biv9d_3" name="Location" multiplicity="ExactlyOne" definitionRef="location.cfid"/>
+        <caseFileItem id="_Biv9d_10" name="response" multiplicity="ExactlyOne" definitionRef="response.cfid">
+            <children>
+                <caseFileItem id="_Biv9d_11" name="main" multiplicity="ExactlyOne" definitionRef="main.cfid"/>
+            </children>
+        </caseFileItem>
+    </caseFileModel>
+    <casePlanModel id="cm__Biv9d_0" name="WeatherInformation" autoComplete="true">
+        <planItem id="pi_ht__Biv9d_0" name="Read Location" definitionRef="ht__Biv9d_0"/>
+        <planItem id="pi_pt__Biv9d_0" name="Call Weather API" definitionRef="pt__Biv9d_0">
+            <entryCriterion id="_Biv9d_18" name="EntryCriterion_0" sentryRef="crit__Biv9d_0"/>
+        </planItem>
+        <planItem id="pi_ht__Biv9d_1" name="Display Temperature" definitionRef="ht__Biv9d_1">
+            <entryCriterion id="_Biv9d_20" name="EntryCriterion_1" sentryRef="crit__Biv9d_1"/>
+        </planItem>
+        <sentry id="crit__Biv9d_0">
+            <planItemOnPart id="_Biv9d_19" sourceRef="pi_ht__Biv9d_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__Biv9d_1">
+            <planItemOnPart id="_Biv9d_21" sourceRef="pi_pt__Biv9d_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__Biv9d_0" name="Read Location" isBlocking="true">
+            <inputs id="_Biv9d_5" name="Location" bindingRef="_Biv9d_3"/>
+            <outputs id="_Biv9d_6" name="Location" bindingRef="_Biv9d_3"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="ReadWeather.humantask">
+                    <parameterMapping id="_Biv9d_1" sourceRef="_Biv9d_5" targetRef="_mv0W_Location"/>
+                    <parameterMapping id="_Biv9d_2" sourceRef="_eHYW_Location" targetRef="_Biv9d_6"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__Biv9d_1" name="Display Temperature" isBlocking="true">
+            <inputs id="_Biv9d_14" name="main" bindingRef="_Biv9d_11"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="DisplayTemperature.humantask">
+                    <parameterMapping id="_Biv9d_8" sourceRef="_Biv9d_14" targetRef="_omnT_main"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__Biv9d_0" name="Call Weather API" isBlocking="true" processRef="CallWeatherAPI.process">
+            <inputs id="_Biv9d_15" name="Location" bindingRef="_Biv9d_3"/>
+            <outputs id="_Biv9d_16" name="main" bindingRef="_Biv9d_11"/>
+            <parameterMapping id="_Biv9d_12" sourceRef="_Biv9d_15" targetRef="_RqPI_Loaction"/>
+            <parameterMapping id="_Biv9d_13" sourceRef="_PcgK_response" targetRef="_Biv9d_16">
+                <transformation id="_Biv9d_17">
+                    <body>
+                        <![CDATA[response.main]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+        </processTask>
+    </casePlanModel>
+</case>

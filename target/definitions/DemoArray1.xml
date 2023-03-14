@@ -1,0 +1,100 @@
+<definitions>
+    <caseFileItemDefinition name="array" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="array.cfid">
+        <property name="arr" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    </caseFileItemDefinition>
+    <caseFileItemDefinition name="array" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="arr.cfid">
+        <property name="id" type="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
+    </caseFileItemDefinition>
+    <case id="DemoArray1.case" name="DemoArray1" expressionLanguage="spel">
+        <documentation textFormat="text/plain">
+            <text>
+                <![CDATA[DemoArray1]]>
+            </text>
+        </documentation>
+        <caseFileModel>
+            <caseFileItem id="_AhqhK_2" name="array" multiplicity="ZeroOrMore" definitionRef="array.cfid">
+                <children>
+                    <caseFileItem id="_AhqhK_9" name="arr" multiplicity="ZeroOrMore" definitionRef="arr.cfid"/>
+                </children>
+            </caseFileItem>
+        </caseFileModel>
+        <casePlanModel id="cm__AhqhK_0" name="DemoArray1" autoComplete="true">
+            <planItem id="pi_pt__AhqhK_0" name="ArrProcess1" definitionRef="pt__AhqhK_0"/>
+            <planItem id="pi_ht__AhqhK_0" name="ArrHuman1" definitionRef="ht__AhqhK_0">
+                <entryCriterion id="_AhqhK_6" name="EntryCriterion_0" sentryRef="crit__AhqhK_0"/>
+            </planItem>
+            <sentry id="crit__AhqhK_0">
+                <planItemOnPart id="_AhqhK_7" sourceRef="pi_pt__AhqhK_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <humanTask id="ht__AhqhK_0" name="ArrHuman1" isBlocking="true">
+                <inputs id="_AhqhK_10" name="array" bindingRef="_AhqhK_2"/>
+                <extensionElements mustUnderstand="false">
+                    <cafienne:implementation name="ArrHuman1" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="ArrHuman1.humantask">
+                        <input id="_y2qB_arr" name="res"/>
+                        <task-model>{
+    "schema":{
+        "title": "",
+        "type": "object",
+        "properties":{
+          "arr":{
+            "title":"arr",
+            "type":"object",
+            "properties":{
+              "arr":{
+                "type":"string",
+                "title":""
+              }
+            }
+          }
+        }
+    }
+}</task-model>
+                        <parameterMapping id="_AhqhK_4" sourceRef="_AhqhK_10" targetRef="_y2qB_arr"/>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+            <processTask id="pt__AhqhK_0" name="ArrProcess1" isBlocking="true" processRef="ArrProcess1.process">
+                <outputs id="_AhqhK_8" name="array" bindingRef="_AhqhK_2">
+                    <bindingRefinement id="_AhqhK_12">
+                        <body>
+                            <![CDATA[update-indexed]]>
+                        </body>
+                    </bindingRefinement>
+                </outputs>
+                <parameterMapping id="_AhqhK_3" sourceRef="_XeVh_arr" targetRef="_AhqhK_8"/>
+            </processTask>
+        </casePlanModel>
+    </case>
+    <process name="ArrProcess1" implementationType="http://www.omg.org/spec/CMMN/ProcessType/Unspecified" id="ArrProcess1.process">
+        <output id="_XeVh_arr" name="res"/>
+        <extensionElements>
+            <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition" async="true">
+                <url>http://172.21.0.1:3000/</url>
+                <method>GET</method>
+                <http-headers>
+                    <http-header name="Content-Type">application/json</http-header>
+                </http-headers>
+                <parameterMapping sourceRef="responsePayload" targetRef="res"/>
+            </cafienne:implementation>
+        </extensionElements>
+    </process>
+    <CMMNDI>
+        <CMMNDiagram>
+            <CMMNShape cmmnElementRef="cm__AhqhK_0">
+                <Bounds x="30" y="50" width="800" height="500"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_pt__AhqhK_0">
+                <Bounds x="160" y="200" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="pi_ht__AhqhK_0">
+                <Bounds x="520" y="200" width="140" height="80"/>
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="_AhqhK_6">
+                <Bounds x="514" y="230" width="12" height="20"/>
+            </CMMNShape>
+            <CMMNEdge sourceCMMNElementRef="pi_pt__AhqhK_0" targetCMMNElementRef="_AhqhK_6"/>
+        </CMMNDiagram>
+    </CMMNDI>
+</definitions>

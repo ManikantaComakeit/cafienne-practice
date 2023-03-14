@@ -1,0 +1,24 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__Biv9d_0">
+            <Bounds x="20" y="20" width="800" height="310"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__Biv9d_0">
+            <Bounds x="60" y="150" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__Biv9d_0">
+            <Bounds x="310" y="150" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_Biv9d_18">
+            <Bounds x="304" y="180" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__Biv9d_1">
+            <Bounds x="570" y="150" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_Biv9d_20">
+            <Bounds x="564" y="180" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__Biv9d_0" targetCMMNElementRef="_Biv9d_18"/>
+        <CMMNEdge sourceCMMNElementRef="pi_pt__Biv9d_0" targetCMMNElementRef="_Biv9d_20"/>
+    </CMMNDiagram>
+</CMMNDI>

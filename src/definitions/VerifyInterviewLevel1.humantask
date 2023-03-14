@@ -1,0 +1,59 @@
+<humantask>
+    <cafienne:implementation name="VerifyInterviewLevel1" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_M9VS_Questions" name="Questions"/>
+        <input id="_Z1na_CandidateDetails" name="CandidateDetails"/>
+        <output id="_jDwW_Questions" name="Questions"/>
+        <output id="_S9xo_CandidateDetails" name="CandidateDetails"/>
+        <task-model>{
+  "schema":{
+    "type":"object",
+    "properties":{
+      "Questions":{
+        "title":"Inteview Level 1",
+        "type":"object",
+        "properties":{
+          "Q1":{
+            "title":"Why Java is platform independent?",
+            "type":"string"
+          },
+          "Q2":{
+            "title":"Why Java is not 100% Object-oriented?",
+            "type":"string"
+          },
+          "Q3":{
+            "title":"What are wrapper classes in Java?",
+            "type":"string"
+          },
+          "Q4":{
+            "title":"What are constructors in Java?",
+            "type":"string"
+          },
+          "Q5":{
+            "title":"When throws keyword is used?",
+            "type":"string"
+          }
+        }
+      },
+      "CandidateDetails":{
+        "title":"Approval Status",
+        "type":"object",
+        "properties":{
+          "isApprovedToLvl2":{
+            "title":"Approved?",
+            "type":"string",
+            "enumNames":[
+              "Approved",
+              "Rejected"
+            ],
+            "enum":[
+              "Approved",
+              "Rejected"
+            ]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

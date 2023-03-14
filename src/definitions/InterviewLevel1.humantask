@@ -1,0 +1,114 @@
+<humantask>
+    <cafienne:implementation name="InterviewLevel1" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_6DBB_Questions" name="Questions"/>
+        <input id="_t4XO_CandidateDetails" name="CandidateDetails"/>
+        <output id="_vPMB_Questions" name="Questions"/>
+        <output id="_Wz29_CandidateDetails" name="CandidateDetails"/>
+        <task-model>{
+  "schema":{
+    "type":"object",
+    "required" : [
+			"Questions"
+		],
+    "properties":{
+      "Questions":{
+        "title":"Inteview Level 1",
+        "type":"object",
+        "properties":{
+          "one":{
+            "title":"Which component is used to compile, debug and execute the java programs?",
+            "type":"string",
+            "enumNames":[
+              "Choose an option",
+              "JRE",
+              "JIT",
+              "JDK",
+              "JVM"
+            ],
+            "enum":[
+              "Choose an option",
+              "JRE",
+              "JIT",
+              "JDK",
+              "JVM"
+            ]
+          },
+          "two":{
+            "title":"Which one of the following is not a Java feature?",
+            "type":"string",
+            "enumNames":[
+              "Choose an option",
+              "Object-oriented",
+              "Use of pointers",
+              "Portable",
+              "Dynamic and Extensible"
+            ],
+            "enum":[
+              "Choose an option",
+              "Object-oriented",
+              "Use of pointers",
+              "Portable",
+              "Dynamic and Extensible"
+            ]
+          },
+          "three":{
+            "title":"Which environment variable is used to set the java path?",
+            "type":"string",
+            "enumNames":[
+              "Choose an option",
+              "MAVEN_Path",
+              "JavaPATH",
+              "JAVA",
+              "JAVA_HOME"
+            ],
+            "enum":[
+              "Choose an option",
+              "MAVEN_Path",
+              "JavaPATH",
+              "JAVA",
+              "JAVA_HOME"
+            ]
+          },
+          "four":{
+            "title":"Which of the following is not an OOPS concept in Java?",
+            "type":"string",
+            "enumNames":[
+              "Choose an option",
+              "Polymorphism",
+              "Inheritance",
+              "Compilation",
+              "Encapsulation"
+            ],
+            "enum":[
+              "Choose an option",
+              "Polymorphism",
+              "Inheritance",
+              "Compilation",
+              "Encapsulation"
+            ]
+          },
+          "five":{
+            "title":"Which exception is thrown when java is out of memory?",
+            "type":"string",
+            "enumNames":[
+              "Choose an option",
+              "MemoryError",
+              "OutOfMemoryError",
+              "MemoryOutOfBoundsException",
+              "MemoryFullException"
+            ],
+            "enum":[
+              "Choose an option",
+              "MemoryError",
+              "OutOfMemoryError",
+              "MemoryOutOfBoundsException",
+              "MemoryFullException"
+            ]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>
